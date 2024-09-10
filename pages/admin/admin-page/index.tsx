@@ -6,6 +6,16 @@ import { RootState } from '../../../utils/reduxtoolkit/store/store';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 
+interface SubmenuItem {
+  title: string;
+  clicked: boolean;
+}
+
+interface MenuItem {
+  clicked: boolean;
+  submenuItems: SubmenuItem[]; 
+}
+
 const AdminPage = () => {
   const collapsed = useSelector((state: RootState) => state.Collapsed1.collapsed1);
   const mode = useSelector((state: RootState) => state.Mode.mode);
@@ -19,8 +29,8 @@ const AdminPage = () => {
     for (let i = 0; i < MENUITEMS.length; i++) {
       MENUITEMS[i].clicked = false;
       if (MENUITEMS[i].submenu) {
-        for (let m = 0; m < (MENUITEMS[i].submenuItems?.length ?? 10); m++) {
-          MENUITEMS[i].submenuItems[m].clicked = false;
+        for (let m = 0; m < (MENUITEMS[i] as MenuItem).submenuItems.length; m++) {
+          (MENUITEMS[i] as MenuItem).submenuItems[m].clicked = false;
         }
       }
     }
