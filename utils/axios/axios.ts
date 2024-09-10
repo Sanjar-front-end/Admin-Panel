@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "http://119.235.112.154:4444/api/admin/v1";
+export const BASE_URL = "";
 
 const AxiosInstance = axios.create({
     baseURL: BASE_URL,
